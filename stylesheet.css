@@ -1,0 +1,29 @@
+.title{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+#folium{
+    width: 100%;
+    margin-top: 30px;
+   
+    
+
+}
+#insta{
+    width: 100%;
+    margin-top: 30px;
+   
+
+
+}
+.container{
+    display: grid;
+    grid-template-rows: 100px auto auto;
+}
+
+html{
+
+    background-color: rgb(255, 255, 255);
+}

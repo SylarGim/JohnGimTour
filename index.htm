@@ -1,0 +1,48 @@
+<html>
+
+  <head>
+    <title>존김의 세계여행</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+      - folium
+      - pandas
+    </py-env>
+    </head>
+
+  <body>
+    <div class="container">
+    
+      <div class="title">존김의 세계여행 Homepage</div>
+      <div id="folium"></div>
+      <div id="insta">
+      <div class="embedsocial-hashtag" data-ref="b63908b7276e7f9e876c12074a01ac2d2eed8018"> 
+        <a class="feed-powered-by-es feed-powered-by-es-feed-new" href="https://embedsocial.com/social-media-aggregator/" target="_blank" title="Widget by EmbedSocial"> Widget by EmbedSocial<span>→</span> </a> </div> 
+        <script> (function(d, s, id) { var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js); }(document, "script", "EmbedSocialHashtagScript")); </script></div>
+      
+    </div>
+    <py-script output="folium"> 
+    import pandas as pd
+    import folium
+    from pyodide.http import open_url
+    
+    url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRzJiM4FIRdPTSvL9lxfsil-uelIhDVSu7pgJLVG4ZudxcEe2wrEK5CpKbQd1eZfJUkLzXL6anDonqB/pub?output=csv'
+    df = pd.read_csv(open_url(url))  
+
+    m = folium.Map([30,15],
+            zoom_start=2 
+            )
+
+    for i in range(len(df)):
+        
+        folium.Marker([df["Latitude"].iloc[i], df["Longitude"].iloc[i]],tooltip=df["Address"].iloc[i]).add_to(m)
+    m
+  </py-script>
+  
+  </body>
+  
+</html>
