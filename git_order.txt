@@ -1,0 +1,6 @@
+git init (초기화, 프로젝트 처음 푸쉬할때 사용)
+git add . (전체파일 대상으로 지정)
+git status (상태보기)
+git commit -m "커밋이름넣기"
+git remote add origin https://github.com/SylarGim/JohnGimTour.git (깃허브와 연결)
+git push origin master (깃허브에 올리기)
