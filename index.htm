@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    <title>존김의 세계여행</title>
+    <title>존김</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="./favicon.png">
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
@@ -17,7 +17,7 @@
   <body>
     <div class="container">
     
-      <div class="title">존김의 세계여행 Homepage</div>
+      <div class="title">존김</div>
       <div id="folium"></div>
       <div id="insta">
       <div class="embedsocial-hashtag" data-ref="b63908b7276e7f9e876c12074a01ac2d2eed8018"> 
@@ -38,9 +38,17 @@
             )
 
     for i in range(len(df)):
-        
-        folium.Marker([df["Latitude"].iloc[i], df["Longitude"].iloc[i]],tooltip=df["Address"].iloc[i]).add_to(m)
+
+        if i == (len(df)-1):
+          folium.Marker([df["Latitude"].iloc[i], df["Longitude"].iloc[i]],tooltip=df["Address"].iloc[i],icon=folium.Icon('red',icon='star')).add_to(m)
+        else:
+          folium.Marker([df["Latitude"].iloc[i], df["Longitude"].iloc[i]],tooltip=df["Address"].iloc[i]).add_to(m)
+    
+    locations = df[["Latitude","Longitude"]].values.tolist()
+    folium.PolyLine(locations=locations).add_to(m)
+
     m
+
   </py-script>
   
   </body>
